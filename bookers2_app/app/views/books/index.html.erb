@@ -1,0 +1,41 @@
+<head>
+  <title>Bookers</title>
+</head>
+<body>
+
+  <div class="container">
+    <div class="row">
+      
+      <div class="col-xs-3">
+        <%= render 'users/userslist', user: current_user %>
+        <%= render 'books/bookslist', book: @book %>
+      </div>
+
+      <div class="col-lg-9">
+       <table class="table table-hover">
+       <h2>Books</h2>
+        <thead>
+          <tr>
+          	<th></th>
+            <th>Title</th>
+            <th>Opinion</th>
+          </tr>
+        </thead>
+        <tbody>
+           <% @books.each do |book| %>
+            <tr>
+              <td>
+                <%= attachment_image_tag @book, :user, :fill, 20, 20, format: 'jpeg' %>
+              </td>
+              <td><%= link_to book.title, "/books/#{book.id}" %></a></td>
+              <td><%= book.body %></td>
+            </tr>
+           <% end %>
+        </tbody>
+       </table>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
